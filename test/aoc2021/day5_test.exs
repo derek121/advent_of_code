@@ -1,6 +1,8 @@
-defmodule Day5Test do
+defmodule AOC2021.Day5Test do
   use ExUnit.Case
 
+  alias AOC2021.Day5
+  
   test "expand horizontal" do
     actual = Day5.expand({{0,9}, {4,9}})
     expected = [{0,9}, {1,9}, {2,9}, {3,9}, {4,9}]

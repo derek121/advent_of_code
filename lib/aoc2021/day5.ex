@@ -1,4 +1,4 @@
-defmodule Day5 do
+defmodule AOC2021.Day5 do
 
   @doc """
   https://adventofcode.com/2021/day/5

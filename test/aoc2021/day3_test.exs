@@ -1,6 +1,7 @@
 defmodule Day3Test do
   use ExUnit.Case
 
+  alias AOC2021.Day3
 
   @doc """
 

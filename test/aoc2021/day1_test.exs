@@ -1,6 +1,7 @@
-defmodule Day1Test do
+defmodule AOC2021.Day1Test do
   use ExUnit.Case
 
+  alias AOC2021.Day1
 
   @doc """
     199 (N/A - no previous measurement)
