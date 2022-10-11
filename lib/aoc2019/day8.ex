@@ -1,6 +1,6 @@
 defmodule AOC2019.Day8 do
   @moduledoc """
-  https://adventofcode.com/2019/day/1
+  https://adventofcode.com/2019/day/8
 
   Each image actually consists of a series of identically-sized layers that are filled in
   this way. So, the first digit corresponds to the top-left pixel of the first layer, the
