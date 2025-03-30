@@ -13,3 +13,8 @@
 
 [Source](lib/aoc2021)  
 [Tests](test/aoc2021)
+
+## 2024
+
+[Source](lib/aoc2024)  
+[Tests](test/aoc2024)
