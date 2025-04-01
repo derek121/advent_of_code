@@ -177,7 +177,7 @@ defmodule AOC2024.Day6 do
       :left when x_loc > 0 ->
         for x <- (x_loc - 1)..0//-1, do: {x, y_loc}
 
-        # Else, must be at the edge at dir points out
+      # Else, must be at the edge at dir points out
       _ ->
         []
     end
