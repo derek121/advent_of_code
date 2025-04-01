@@ -63,7 +63,7 @@ defmodule Day3 do
   end
 
   def determine_priority(type) when type >= "a" and type <= "z" do
-    a = hd('a') # 97
+    a = hd(~c"a") # 97
     this = hd(String.to_charlist(type))
 
     # 'c' for example is 99, and we want to get 3 for a "c" incoming, so
@@ -102,7 +102,7 @@ defmodule Day3 do
   end
 
   def determine_priority(type) when type >= "A" and type <= "Z" do
-    a = hd('A') # 65
+    a = hd(~c"A") # 65
     this = hd(String.to_charlist(type))
 
     # 'C' for example is 67, and we want to get 29 for a "C" incoming, so

@@ -52,22 +52,22 @@ defmodule AOC2021.Day14 do
 
   def insertion_rules() do
     %{
-      'CH' => ?B,
-      'HH' => ?N,
-      'CB' => ?H,
-      'NH' => ?C,
-      'HB' => ?C,
-      'HC' => ?B,
-      'HN' => ?C,
-      'NN' => ?C,
-      'BH' => ?H,
-      'NC' => ?B,
-      'NB' => ?B,
-      'BN' => ?B,
-      'BB' => ?N,
-      'BC' => ?B,
-      'CC' => ?N,
-      'CN' => ?C
+      ~c"CH" => ?B,
+      ~c"HH" => ?N,
+      ~c"CB" => ?H,
+      ~c"NH" => ?C,
+      ~c"HB" => ?C,
+      ~c"HC" => ?B,
+      ~c"HN" => ?C,
+      ~c"NN" => ?C,
+      ~c"BH" => ?H,
+      ~c"NC" => ?B,
+      ~c"NB" => ?B,
+      ~c"BN" => ?B,
+      ~c"BB" => ?N,
+      ~c"BC" => ?B,
+      ~c"CC" => ?N,
+      ~c"CN" => ?C
     }
   end
 

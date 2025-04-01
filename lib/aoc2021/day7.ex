@@ -28,7 +28,7 @@ defmodule AOC2021.Day7 do
   end
 
   def calc(target, positions) do
-    total =
+    _total =
       positions
       |> Enum.reduce(0, fn pos, acc ->
         acc + abs(target - pos)

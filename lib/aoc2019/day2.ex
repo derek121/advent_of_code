@@ -21,7 +21,7 @@ defmodule AOC2019.Day2 do
   def go(program) do
     indices = Enum.take_every(0..(length(program) - 1), 4)
 
-    result_prog =
+    _result_prog =
       indices
       |> Enum.reduce_while(program, fn idx, program ->
         op = Enum.at(program, idx)

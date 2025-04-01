@@ -1,4 +1,4 @@
-defmodule Day4 do
+defmodule AOC2021.Day4 do
 
   @doc """
   (incomplete)
@@ -14,7 +14,7 @@ defmodule Day4 do
   1 12 20 15 19
   """
   def run() do
-    board = generate_board()
+    # board = generate_board()
 #    mark_board(board, 20)
 
 #    result = check_board(board)
