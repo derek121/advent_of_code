@@ -29,3 +29,5 @@ advent_of_code-*.tar
 
 .idea/
 *.iml
+
+*.swp
