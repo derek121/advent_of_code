@@ -77,14 +77,31 @@ defmodule AOC2024.Day8Test do
     """
   end
 
-  test "go" do
-    Day8.go(source_map())
-    |> IO.inspect(label: "Done in test")
+  test "find and display antinodes" do
+    antinodes = Day8.go(source_map())
+
+    {map, num_rows, num_cols} = _map_creation = Day8.create_map(source_map())
+    # Day8.print_map(map, num_rows, num_cols)
+
+    {map, overlapping} = Day8.merge_antinodes_into_map(map, antinodes)
+
+    IO.puts("#{length(antinodes)} antinodes found: #{inspect(antinodes)}")
+
+    if length(overlapping) > 0 do
+      IO.puts("Antinodes overlapping antennae:")
+
+      Enum.each(overlapping, fn coord ->
+        IO.puts("#{inspect(coord)}: #{inspect(map[coord])}")
+      end)
+    end
+
+    Day8.print_map(map, num_rows, num_cols)
   end
 
+  @tag :skip
   test "create_map" do
-    # source_map = source_map()
-    source_map = source_map_demo()
+    source_map = source_map()
+    # source_map = source_map_demo()
 
     {map, num_rows, num_cols} = _map_creation = Day8.create_map(source_map)
 
@@ -109,7 +126,8 @@ defmodule AOC2024.Day8Test do
 
     actual =
       Day8.find_antennae_for_all_freqs(m)
-      |> IO.inspect(label: "find_antennae_for_all_freqs return")
+
+    # |> IO.inspect(label: "find_antennae_for_all_freqs return")
 
     expected = [
       {"a", [{1, 0}, {1, 1}, {2, 1}, {4, 0}]},
@@ -125,7 +143,8 @@ defmodule AOC2024.Day8Test do
 
     actual =
       Day8.find_antennae_for_all_freqs(m)
-      |> IO.inspect(label: "find_antennae_for_all_freqs return")
+
+    # |> IO.inspect(label: "find_antennae_for_all_freqs return")
 
     expected = [{"a", [{4, 3}, {5, 5}]}]
 
@@ -142,9 +161,29 @@ defmodule AOC2024.Day8Test do
     # ]
     antennae_for_all_freqs =
       Day8.find_antennae_for_all_freqs(m)
-      |> IO.inspect(label: "done")
 
-      Day8.find_antinodes_for_all_freqs(antennae_for_all_freqs, num_rows, num_cols)
+    # |> IO.inspect(label: "done")
+
+    expected = [
+      {0, 7},
+      {1, 5},
+      {2, 3},
+      {3, 1},
+      {3, 6},
+      {4, 2},
+      {6, 0},
+      {6, 5},
+      {7, 7},
+      {9, 4},
+      {10, 2},
+      {10, 10},
+      {10, 11},
+      {11, 0}
+    ]
+
+    actual = Day8.find_antinodes_for_all_freqs(antennae_for_all_freqs, num_rows, num_cols)
+
+    assert actual == expected
   end
 
   test "find_antinodes_for_antenna_list" do
@@ -161,7 +200,8 @@ defmodule AOC2024.Day8Test do
 
     actual =
       Day8.find_antinodes_for_antennae_list(antennae, 12, 12)
-      |> IO.inspect(label: "All")
+
+    # |> IO.inspect(label: "All")
 
     assert actual == expected
   end
@@ -187,7 +227,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {5, 5}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     expected = [{3, 1}, {6, 7}]
     assert antinodes == expected
@@ -198,7 +238,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {3, 5}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     expected = [{5, 1}, {2, 7}]
     assert antinodes == expected
@@ -209,7 +249,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {6, 3}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     expected = [{2, 3}, {8, 3}]
     assert antinodes == expected
@@ -220,7 +260,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {4, 5}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     expected = [{4, 1}, {4, 7}]
     assert antinodes == expected
@@ -231,7 +271,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {8, 5}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {10,7} is off the grid E
     expected = [{4, 1}]
@@ -243,7 +283,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {3, 8}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {4,10} is off the grid S
     expected = [{1, 4}]
@@ -255,7 +295,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {8, 8}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {10,10} is off the grid E and S
     expected = [{4, 4}]
@@ -267,7 +307,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {1, 5}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {-1,6} is off the grid E
     expected = [{5, 3}]
@@ -279,7 +319,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {5, 8}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {4,10} is off the grid S
     expected = [{7, 4}]
@@ -291,7 +331,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {7, 6}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {10,6} is off the grid S
     expected = [{1, 6}]
@@ -304,7 +344,7 @@ defmodule AOC2024.Day8Test do
     ant2 = {4, 8}
 
     antinodes = Day8.find_antinodes_for_antennae_pair(ant1, ant2, 10, 10)
-    IO.inspect(antinodes, label: "Found antinodes")
+    # IO.inspect(antinodes, label: "Found antinodes")
 
     # {4,10} is off the grid S
     expected = [{4, 4}]
