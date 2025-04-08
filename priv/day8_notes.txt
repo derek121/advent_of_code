@@ -1,0 +1,42 @@
+def create_map(source_map)
+In:
+Text representation of the map
+
+Out:
+Map of coord => char
+num_rows
+num_cols
+
+#
+
+def find_antennae_for_all_freqs(map)
+In:
+Map of coord => char
+
+Out:
+[
+  {"0", [{4, 4}, {5, 2}, {7, 3}, {8, 1}]}, 
+  {"A", [{6, 5}, {8, 8}, {9, 9}]}
+]
+
+#
+
+In:
+[
+  {"0", [{4, 4}, {5, 2}, {7, 3}, {8, 1}]}, 
+  {"A", [{6, 5}, {8, 8}, {9, 9}]}
+]
+Out:
+(list of antinode coords)
+def find_antinodes_for_all_freqs(antennae_for_all_freqs, num_rows, num_cols)
+
+def find_antinodes_for_antennae_list(antennae, num_rows, num_cols)
+
+def find_antinodes_for_antennae_list(antennae, num_rows, num_cols, acc)
+
+def find_antinodes_for_antennae(antennae, num_rows, num_cols)
+
+def find_antinodes_for_antennae_pair(antenna1, antenna2, num_rows, num_cols)
+
+
+
