@@ -3,6 +3,61 @@ defmodule AOC2024.Day10 do
 
   @target_height 9
 
+  @moduledoc """
+  Find the number of paths from each trailhead, which are locations at height 0,
+  to a peak, at height 9, with each step being an increment of one.
+
+  From the problem description link above:
+
+  "For all practical purposes, this means that a hiking trail is any path that
+  starts at height 0, ends at height 9, and always increases by a height of
+  exactly 1 at each step. Hiking trails never include diagonal steps - only
+  up, down, left, or right (from the perspective of the map).
+
+  A trailhead is any position that starts one or more hiking trails - here,
+  these positions will always have height 0. Assembling more fragments of
+  pages, you establish that a trailhead's score is the number of 9-height
+  positions reachable from that trailhead via a hiking trail. In the above
+  example, the single trailhead in the top left corner has a score of 1 because
+  it can reach a single 9 (the one in the bottom left)."
+
+  From the page, one example:
+
+  ...0...
+  ...1...
+  ...2...
+  6543456
+  7.....7
+  8.....8
+  9.....9
+
+  This has a score of two, as we can reach two heights of 9 by the above rules.
+  Output from running against this map, via the test "Run with source map
+  from desc 1", can be found in priv/day-10-sample-output-1.txt. The "2" at the
+  very end is the expected number of paths to a 9. We see the output
+  "Found 9. Returning." twice, both times, as can be seen from the surrounding
+  output, as the "down" check from the position above each, done in turn at each
+  location visited up, right, down, left.
+
+  The more involved map from the description:
+
+  89010123
+  78121874
+  87430965
+  96549874
+  45678903
+  32019012
+  01329801
+  10456732
+
+  From the description:
+  "This larger example has 9 trailheads. Considering the trailheads in reading
+  order, they have scores of 5, 6, 5, 3, 1, 3, 5, 3, and 5. Adding these scores
+  together, the sum of the scores of all trailheads is 36."
+
+  Output for running with this map is in priv/day-10-sample-output-2.txt. We
+  indeed see the expected "Found 9. Returning." 36 times.
+  """
   def go(source_map) do
     {map, num_rows, num_cols} =
       create_map(source_map)
@@ -94,7 +149,6 @@ defmodule AOC2024.Day10 do
   And can't go left since it's impassable
   This path now also backs out, and we're left with a result of 1 path to 9.
   """
-  # def walk(all_found \\ MapSet.new(), map, pos, num_rows, num_cols) do
   def walk(all_found, map, pos, num_rows, num_cols) do
     height = map[pos]
 
@@ -197,14 +251,10 @@ defmodule AOC2024.Day10 do
     # 9876
     # """
 
-    # {map, num_rows, num_cols} =
-
     split =
       source_map
       # ["0123", "...4", "...5", "9876"]
       |> String.split("\n", trim: true)
-
-      #
 
       # [
       # ["0", "1", "2", "3"],
