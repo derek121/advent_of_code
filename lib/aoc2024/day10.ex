@@ -1,8 +1,6 @@
 defmodule AOC2024.Day10 do
   # https://adventofcode.com/2024/day/10
 
-  @target_height 9
-
   @moduledoc """
   Find the number of paths from each trailhead, which are locations at height 0,
   to a peak, at height 9, with each step being an increment of one.
@@ -58,6 +56,9 @@ defmodule AOC2024.Day10 do
   Output for running with this map is in priv/day-10-sample-output-2.txt. We
   indeed see the expected "Found 9. Returning." 36 times.
   """
+
+  @target_height 9
+
   def go(source_map) do
     {map, num_rows, num_cols} =
       create_map(source_map)
